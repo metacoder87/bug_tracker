@@ -3,7 +3,8 @@ class CreateBugs < ActiveRecord::Migration[5.2]
     create_table :bugs do |t|
       t.string :location
       t.text :description
-      t.boolean :status
+      # True = Active unsolved bug / False = Archived resolved bug
+      t.boolean :status 
 
       t.timestamps
     end

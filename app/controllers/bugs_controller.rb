@@ -1,6 +1,16 @@
 class BugsController < ApplicationController
   before_action :set_bug, only: %i[ show edit update destroy ]
 
+  def solve
+    @bug = Bug.find(params[:id])
+    respond_to do |format|
+      if bug.update_attributes(solved: !@bug.solved)
+        format.html { redirect_to action: :show }
+        format.js
+      end
+    end
+  end
+
   # GET /bugs or /bugs.json
   def index
     @bugs = Bug.all
@@ -65,6 +75,6 @@ class BugsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bug_params
-      params.fetch(:bug, {})
+      params.require(:bug).permit(:location, :description, :status)
     end
 end

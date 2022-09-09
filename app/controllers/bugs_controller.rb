@@ -4,7 +4,7 @@ class BugsController < ApplicationController
   def solve
     @bug = Bug.find(params[:id])
     respond_to do |format|
-      if bug.update_attributes(solved: !@bug.solved)
+      if bug.update_attributes(status: !@bug.status)
         format.html { redirect_to action: :show }
         format.js
       end

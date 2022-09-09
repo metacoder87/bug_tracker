@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= form.check_box :solved, id: :bug_solved %>
+    <%= form.label :solved %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

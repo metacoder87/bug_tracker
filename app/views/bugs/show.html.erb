@@ -1,4 +1,28 @@
 <p id="notice"><%= notice %></p>
 
+<p> 
+    <strong>Location: </strong>
+    <%= @bug.location %>
+</p>
+
+<p>
+    <strong>Description: </strong>
+    <%= @bug.description %>
+</p>
+
+<p>
+    <strong>Solve: </strong>
+    <span id="bug_status"><%= @bug.status %></span>
+</p>
+
+<p>
 <%= link_to 'Edit', edit_bug_path(@bug) %> |
 <%= link_to 'Back', bugs_path %>
+</p>
+
+<p>
+    <%= if @bug.solved? %>
+        <%= link_to "Revive Bug", solve_bug_path, method: :put, remote: true, class: "btn btn-danger", id: "solve_button" %>
+    <% else %>
+        <%= link_to "Solve Bug", solve_bug_path, method: :put, remote: true, class: "btn btn-warning", id: "solve_button" %>
+</p><% end %>

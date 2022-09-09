@@ -5,6 +5,9 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Location</th>
+      <th>Description</th>
+      <th>Solve</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +15,9 @@
   <tbody>
     <% @bugs.each do |bug| %>
       <tr>
+        <td><%= bug.location %></td>
+        <td><%= bug.description %></td>
+        <td><%= bug.solve %></td>
         <td><%= link_to 'Show', bug %></td>
         <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
         <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +25,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New Bug', new_bug_path %>

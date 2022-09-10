@@ -21,8 +21,5 @@
 </p>
 
 <p>
-    <%= if @bug.solved? %>
-        <%= link_to "Revive Bug", solve_bug_path, method: :put, remote: true, class: "btn btn-danger", id: "solve_button" %>
-    <% else %>
-        <%= link_to "Solve Bug", solve_bug_path, method: :put, remote: true, class: "btn btn-warning", id: "solve_button" %>
-</p><% end %>
+    <%= solve_bug_button(@bug) %>
+</p>

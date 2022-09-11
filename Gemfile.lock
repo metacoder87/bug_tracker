@@ -96,6 +96,7 @@ GEM
     eventmachine (1.2.7)
     execjs (2.8.1)
     ffi (1.15.5)
+    foreman (0.87.2)
     formatador (1.1.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -265,6 +266,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  foreman
   guard-livereload
   jbuilder (~> 2.5)
   jquery-rails
@@ -287,4 +289,4 @@ RUBY VERSION
    ruby 2.6.7p197
 
 BUNDLED WITH
-   2.2.20
+   2.3.22

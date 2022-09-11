@@ -1,6 +1,6 @@
 module BugsHelper
     def solve_bug_button(bug)
-        link_to "#{bug.status? ? 'Reopen' : 'Resolve'} Bug", solve_bug_path,
+        link_to "#{bug.status? ? 'Revive' : 'Solve'} Bug", solve_bug_path(bug),
             method: :put,
             remote: true,
             class: solve_bug_button_class(bug),

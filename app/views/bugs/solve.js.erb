@@ -4,12 +4,8 @@ slv = document.getElementById('solve_button')
 
 <% if @bug.solved %>
     slv.textContent = 'Reopen Bug'
-    slv.classList.add('btn-danger')
-    slv.classList.remove('btn-warning')
 <% else %>
     slv.textContent = 'Solve Bug'
-    slv.classList.add('btn-warning')
-    slv.classList.remove('btn-danger')
 <% end %>
 
-document.getElementById('bug_solve_status').textContent = "<%= @bug.solved %>"
+document.getElementById('bug_solve_status').outerHTML = "<%= escape_javascript solve_bug_badge(@bug) %>"

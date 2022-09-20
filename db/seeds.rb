@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-bugs = Bugs.create([
-    {title: "Bug 1", body: "This is bug 1"},
-    {title: "Bug 2", body: "This is bug 2"}
+bugs = Bug.create([
+    { location: "BugTracker/Bug1", description: "This is bug 1"},
+    { location: "BugTracker/Bug2", description: "This is bug 2"}
 ])
 
 Comment.create([

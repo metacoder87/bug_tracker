@@ -1,4 +1,9 @@
 module BugsHelper
+    
+    def new_comment
+        @comment ||= Comment.new(bug: @bug)
+    end
+    
     def solve_bug_button(bug)
         link_to "#{bug.status? ? 'Revive' : 'Solve'} Bug", solve_bug_path(bug),
             method: :put,

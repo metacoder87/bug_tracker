@@ -16,3 +16,12 @@
 </div>
 
     <%= solve_bug_button(@bug) %>
+
+
+<hr>
+
+<%= render partial: 'comments/form' %>
+
+<div class="comments">
+    <%= render @bug.comments %>
+</div>

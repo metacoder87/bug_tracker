@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_064255) do
   create_table "bugs", force: :cascade do |t|
     t.string "location"
     t.text "description"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

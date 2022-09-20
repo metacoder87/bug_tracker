@@ -4,7 +4,7 @@ class CreateBugs < ActiveRecord::Migration[5.2]
       t.string :location
       t.text :description
       # True = Active unsolved bug / False = Archived resolved bug
-      t.boolean :status 
+      t.boolean :status, :default => false 
 
       t.timestamps
     end

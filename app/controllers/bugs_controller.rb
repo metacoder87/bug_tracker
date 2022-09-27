@@ -13,7 +13,7 @@ class BugsController < ApplicationController
 
   # GET /bugs or /bugs.json
   def index
-    @bugs = Bug.all
+    @bugs = Bug.order(created_at: :desc)
   end
 
   # GET /bugs/1 or /bugs/1.json

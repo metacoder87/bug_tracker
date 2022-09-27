@@ -3,6 +3,6 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true
 
-  default_scope { order(created_at: :desc) }
+  scope :by_date, { order(created_at: :desc) }
   
 end

@@ -6,21 +6,18 @@
   <thead>
     <tr>
       <th>Location</th>
-      <th>Description</th>
-      <th>Solve</th>
-      <th colspan="3"></th>
+      <th>Age</th>
     </tr>
   </thead>
 
   <tbody>
     <% @bugs.each do |bug| %>
       <tr>
-        <td><%= bug.location %></td>
-        <td><%= bug.description %></td>
-        <td><%= bug.status %></td>
-        <td><%= link_to 'Show', bug %></td>
-        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-        <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to bug.location, bug %>
+          <%= solve_bug_bage(bug) %>
+        </td>
+        <td><%= time_ago_in_words bug.created_at %></td>
       </tr>
     <% end %>
   </tbody>

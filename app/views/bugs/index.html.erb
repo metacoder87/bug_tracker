@@ -14,7 +14,7 @@
       <tr>
         <td>
           <%= link_to bug.location, bug %>
-          <%= solve_bug_bage(bug) %>
+          <%= solve_bug_badge(bug) %>
         </td>
         <td><%= time_ago_in_words bug.created_at %></td>
       </tr>
@@ -23,4 +23,4 @@
 </table>
 <br>
 
-<%= link_to 'New Bug', new_bug_path %>
+<%= link_to 'New Bug', new_bug_path, class: 'btn btn-secondary' %>

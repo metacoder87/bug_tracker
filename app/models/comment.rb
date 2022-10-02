@@ -1,8 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :bug
 
-  validates :body, presence: true
+  validates :location, :description, presence: true
 
-  scope :by_date, { order(created_at: :desc) }
+  scope :by_date, -> { order(created_at: :desc) }
   
 end

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   
-  resource :comments
+  devise_for :users
+  resources :comments
   
   resources :bugs do
     member do

@@ -71,6 +71,14 @@ Devise.setup do |config|
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
 
+  Rails.application.config.to_prepare do
+    Devise::SessionsController.layout "devise"
+    Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
+    Devise::ConfirmationsController.layout "devise"
+    Devise::UnlocksController.layout "devise"
+    Devise::PasswordsController.layout "devise"
+  end
+
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will

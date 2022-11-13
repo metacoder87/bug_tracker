@@ -1,26 +1,19 @@
+<p id="notice"><%= notice %></p>
 
-<div class="d-flex flex-row justify-content-between">
-    <div>
-        <h1><%= @bug.location %></h1>
-        <%= solve_bug_badge(@bug) %>
-    </div>
-    <div>
-        <%= link_to 'Edit', edit_bug_path(@bug), class: 'btn btn-secondary' %>
-        <%= link_to 'New Bug', new_bug_path, class: 'btn btn-success' %>
-    </div>
-</div>
+<p>
+  <strong>Path:</strong>
+  <%= @bug.path %>
+</p>
 
-<div id="bug-description">
-    <%= simple_format @bug.description %>
-</div>
+<p>
+  <strong>Description:</strong>
+  <%= @bug.description %>
+</p>
 
-    <%= solve_bug_button(@bug) %>
+<p>
+  <strong>Status:</strong>
+  <%= @bug.status %>
+</p>
 
-
-<hr>
-
-<%= render partial: 'comments/form' %>
-
-<div id="comments">
-    <%= render @bug.comments.by_date %>
-</div>
+<%= link_to 'Edit', edit_bug_path(@bug) %> |
+<%= link_to 'Back', bugs_path %>

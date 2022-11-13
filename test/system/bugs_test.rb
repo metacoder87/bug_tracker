@@ -14,6 +14,9 @@ class BugsTest < ApplicationSystemTestCase
     visit bugs_url
     click_on "New Bug"
 
+    fill_in "Description", with: @bug.description
+    fill_in "Path", with: @bug.path
+    check "Status" if @bug.status
     click_on "Create Bug"
 
     assert_text "Bug was successfully created"
@@ -24,6 +27,9 @@ class BugsTest < ApplicationSystemTestCase
     visit bugs_url
     click_on "Edit", match: :first
 
+    fill_in "Description", with: @bug.description
+    fill_in "Path", with: @bug.path
+    check "Status" if @bug.status
     click_on "Update Bug"
 
     assert_text "Bug was successfully updated"

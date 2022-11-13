@@ -1,26 +1,31 @@
+<p id="notice"><%= notice %></p>
 
 <h1>Bugs</h1>
 
-<table class="table">
+<table>
   <thead>
     <tr>
-      <th>Location</th>
-      <th>Age</th>
+      <th>Path</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @bugs.each do |bug| %>
       <tr>
-        <td>
-          <%= link_to bug.location, bug %>
-          <%= solve_bug_badge(bug) %>
-        </td>
-        <td><%= time_ago_in_words bug.created_at %></td>
+        <td><%= bug.path %></td>
+        <td><%= bug.description %></td>
+        <td><%= bug.status %></td>
+        <td><%= link_to 'Show', bug %></td>
+        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
+        <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <br>
 
-<%= link_to 'New Bug', new_bug_path, class: 'btn btn-secondary' %>
+<%= link_to 'New Bug', new_bug_path %>

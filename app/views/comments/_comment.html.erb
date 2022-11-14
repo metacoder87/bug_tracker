@@ -1,0 +1,18 @@
+<% unless !comment.persisted? %>
+    <% @user = User.find(comment.user_id).email %>
+    <div>
+        <small><%= time_ago_in_words(comment.created_at) + " ago..." %></small>
+        <br>
+        <small><%= @user + " posted"%></small>
+        <br>
+        <strong><%= comment.body %></strong>
+        <br>
+            <div>
+                <%= link_to 'edit', edit_bug_comment_path(comment) %>
+                <%= button_to 'delete', delete_bug_comment_path, data: { confirm: 'Are you sure?' }, method: :destroy %>
+            </div>
+        <br>
+        <br>
+    </div>
+
+<% end %>

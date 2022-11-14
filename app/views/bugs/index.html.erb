@@ -1,31 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Bugs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bugs.each do |bug| %>
-      <tr>
-        <td><%= bug.path %></td>
-        <td><%= bug.description %></td>
-        <td><%= bug.status %></td>
-        <td><%= link_to 'Show', bug %></td>
-        <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-        <td><%= link_to 'Destroy', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if user_signed_in? %>
+  <span>
+    Logged in as
+    <%= current_user.email %>
+  </span>
+  <%= link_to 'Logout', destroy_user_session_path %>
+<% else %>
+  <%= link_to 'Sign Up', new_user_registration_path %>
+  <%= link_to 'Sign In', new_user_session_path %>
+<% end %>
 
 <br>
 
+<h1>Bug Tracker</h1>
+
 <%= link_to 'New Bug', new_bug_path %>
+<br>
+
+<%= link_to 'Active', active_bugs_path %>
+
+<br>
+<%= link_to 'Archive', archive_bugs_path %>

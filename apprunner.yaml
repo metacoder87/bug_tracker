@@ -1,14 +1,11 @@
 version: 1.0
-runtime: ruby3.1 
+runtime: ruby31 
 build:
   commands:
-    pre_build:
-      - rbenv install 3.1.0
-      - gem install bundler
     build:
       - bundle install
       - rails db:create
       - rails db:migrate
       - RAILS_ENV=production rake assets:precompile
 run:
-  command: bundle exec rails server -p ${PORT:-5000}
+  command: bundle exec rackup --host 0.0.0.0 -p 8080

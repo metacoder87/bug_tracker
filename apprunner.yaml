@@ -6,6 +6,7 @@ build:
       - rbenv install 3.1.0
       - gem install bundler -v 2.4.7
       - sudo yum -y install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+      - export PGDATA=/var/lib/pgsql/data
       - sudo postgresql-setup initdb
     build:
       - bundle install

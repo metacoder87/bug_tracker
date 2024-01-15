@@ -4,8 +4,8 @@ build:
   commands:
     pre-build:
       - rbenv install 3.1.0
-      - gem install bundler
-      - gem install pg
+      - gem install bundler -v 2.4.7
+      - gem install pg -- --with-pg-config=/Library/PostgreSQL/9.4/bin/pg_config
     build:
       - bundle install
       - rails db:create

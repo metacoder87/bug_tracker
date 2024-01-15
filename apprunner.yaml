@@ -1,5 +1,5 @@
 version: 1.0
-runtime: ruby3.1 # Or the specific Ruby version your app requires
+runtime: ruby3.1 
 build:
   commands:
     pre_build:

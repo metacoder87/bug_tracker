@@ -2,6 +2,9 @@ version: 1.0
 runtime: ruby31 
 build:
   commands:
+    pre_build:
+      - rbenv install 3.1.0
+      - gem install bundler
     build:
       - bundle install
       - rails db:create

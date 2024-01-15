@@ -5,7 +5,8 @@ build:
     pre-build:
       - rbenv install 3.1.0
       - gem install bundler -v 2.4.7
-      - gem install pg -- --with-pg-config=/Library/PostgreSQL/9.4/bin/pg_config
+      - sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+      - sudo service postgresql initdb
     build:
       - bundle install
       - rails db:create

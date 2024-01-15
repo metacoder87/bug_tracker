@@ -5,6 +5,7 @@ build:
     pre-build:
       - rbenv install 3.1.0
       - gem install bundler
+      - gem install pg
     build:
       - bundle install
       - rails db:create

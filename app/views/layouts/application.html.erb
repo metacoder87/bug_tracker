@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <title>BugTracker | GMCubeDesigns </title>
+      <%= favicon_link_tag 'neon_bug_logo.png' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag :bugs %>
+    <%= javascript_include_tag :replies %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+    <main>
+      <div class="heading">
+        <div class="authorized">
+          <% if user_signed_in? %>
+            <span>
+              Logged in as:
+              <%= current_user.email %>
+            </span>
+            <%= link_to 'Logout', destroy_user_session_path %>
+          <% end %>
+        </div>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <a href="https://gmcubedesigns.com/" target="_blank" class="logo">
+          <%= image_tag 'gm_cubed_banner.png' %>
+        </a>
+      </div>
+      <%= yield %>
+    </main>
+  </body>
+</html>

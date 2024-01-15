@@ -1,0 +1,33 @@
+<h1>Bugs in Process</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Bug.all.each do |bug| %>
+      <% if bug.status == "in_progress" %>
+        <tr>
+          <td><%= bug.project %></td>
+          <td><%= bug.description %></td>
+          <td id="status"><%= bug.status %></td>
+          <td id="priority"><%= bug.priority %></td>
+          <td><%= link_to 'Show', bug %></td>
+          <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
+          <td><%= link_to 'Delete', bug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<section>
+  <%= link_to 'Back', bugs_path %>
+</section>

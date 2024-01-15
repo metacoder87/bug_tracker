@@ -1,0 +1,20 @@
+<% if reply.persisted? %>
+    <% @user = User.find(reply.user_id).email %>
+    <% @comment = Comment.find(reply.comment_id) %>
+    <div>
+        <small><%= @user + " replied"%></small>
+        <br>
+        <strong><%= reply.body %></strong>
+        <br>
+        <small><%= time_ago_in_words(reply.created_at) + " ago..." %></small>
+        <% if current_user.email == @user %>
+                <section>
+                    <%= link_to 'delete', bug_comment_reply_path(@bug.id, @comment.id, reply), data: { confirm: 'Are you sure?' }, method: :delete %>
+                    
+                    <%= link_to 'edit', edit_bug_comment_reply_path(@bug.id, @comment.id, reply) %>
+                </section>
+        <% end %>
+        <br>
+    </div>
+
+<% end %>

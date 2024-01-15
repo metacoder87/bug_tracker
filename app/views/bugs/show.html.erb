@@ -1,0 +1,87 @@
+<section>
+  <p id="notice"><%= notice %></p>
+
+  <div class="bug">
+    <h2>
+      <strong>Project:</strong>
+      <%= @bug.project %>
+    </h2>
+
+    <p>
+      <strong>Path:</strong>
+      <%= @bug.path %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <span id="status"><%= @bug.status %></span>
+    </p>
+
+    <p>
+      <strong>Priority:</strong>
+      <span id="priority"><%= @bug.priority %></span>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @bug.description %>
+    </p>
+
+    <p>
+      <strong>Found by:</strong>
+      <%= @bug.finder %>
+    </p>
+
+    <% if @bug.fixer %>
+      <p>
+        <strong>Assigned to:</strong>
+        <%= @bug.fixer %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back', bugs_path %>
+  <%= link_to 'Edit', edit_bug_path(@bug) %>
+</section>
+
+<section>
+<h2>Comments</h2>
+  <div class="comment">
+    <%= form_with(model: [@bug, @bug.comments.build]) do |form| %>
+      <div>
+        <%= form.label :body, 'New Comment', for: 'comment_body' %>
+        <%= form.hidden_field :user_id %>
+        <%= form.hidden_field :bug_id %>
+        <%= form.text_area :body, id: 'comment_body', class: 'form-control' %>
+      </div>
+      <%= form.submit 'Post' %>
+    <% end %>
+  </div>
+
+  <div class="comment">
+    <% @bug.comments.order("updated_at DESC").each do |comment| %>
+      <div class="comment-body">
+        <%= render partial: 'comments/comment', locals: { comment: comment } %>
+      </div>
+
+      <button class="reply-button">Reply</button>
+      
+      <div class="reply" id="reply" style="display: none;">
+        <%= form_with(model: [@bug, comment, comment.replies.build]) do |form| %>
+          <div>
+            <%= form.label :body, 'New Reply', for: 'reply_body' %>
+            <%= form.hidden_field :bug_id %>
+            <%= form.hidden_field :comment_id %>
+            <%= form.hidden_field :user_id %>
+            <%= form.text_area :body, id: 'reply_body', class: 'form-control' %>
+          </div>
+          <%= form.submit 'Post Reply' %>
+        <% end %>
+      </div>
+      <div class="replies">
+        <%= render partial: 'replies/reply', collection: comment.replies %>
+      </div>
+    <% end %>
+  </div>
+
+</section>

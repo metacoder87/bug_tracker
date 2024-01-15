@@ -1,0 +1,27 @@
+// Place all the styles related to the Replies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+/* Style for replies */
+.reply {
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #3f3f3f;
+    border-radius: 8px;
+}
+
+/* Style for the replies container */
+.replies {
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    text-align: right;
+    padding: 10px;
+}
+
+.replies div {
+    border: 2px solid #3f3f3f;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #541388;
+}

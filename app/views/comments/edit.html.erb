@@ -1,0 +1,18 @@
+<h1>Editing Comment</h1>
+<% bug = Bug.find(params[:id]) %>
+<% comment = bug.comments.find(params[:bug_id]) %>
+<div>
+  <p>Comment</p>
+    <%= form_with(model: [bug, comment]) do |form| %>
+      <div>
+        <%= form.label 'Edit Comment' %>
+        <% user_id = current_user.id %>
+        <%= form.hidden_field :user_id %>
+        <%= form.hidden_field :bug_id %>
+        <%= form.text_area :body, class: 'form-control' %>
+      </div>
+      <%= form.submit 'Update' %>
+    <% end %>
+</div>
+
+<%= link_to 'Back', bug_path %>

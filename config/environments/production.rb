@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require_relative "initializers/secrets" 
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -15,6 +16,12 @@ Rails.application.configure do
     enable_starttls: true,
     open_timeout:    30,
     read_timeout:    30 }
+
+  db_config = get_secret('bug-tracker-db')
+  secret_key_base = get_secret('bug-tracker/secret-key-base')
+  master_key = get_secret('bug-tracker/master-key')
+
+  config.database_configuration = YAML.safe_load(db_config)
     
   # Code is not reloaded between requests.
   config.cache_classes = true

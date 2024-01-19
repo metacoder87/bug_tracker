@@ -5,9 +5,10 @@ build:
     pre-build:
       - rbenv install 3.1.0
       - gem install bundler -v 2.4.7
-      - sudo yum -y install postgresql postgresql-server postgresql-contrib postgresql-docs
-      - psql --version
-      - gem install pg -v 1.2.3
+      - sudo yum -y install postgresql-server postgresql-contrib postgresql-docs
+      - aws secretsmanager get-secret-value --secret-id bug-tracker/master-key --query SecretString --output text > config/master.key
+      - aws secretsmanager get-secret-value --secret-id bug-tracker/secret-key-base --query SecretString --output text > config/credentials.yml.enc
+      - aws secretsmanager get-secret-value --secret-id bug-tracker-db --query SecretString --output text > dbsync
     build:
       - bundle install
       - rails db:create RAILS_ENV=production

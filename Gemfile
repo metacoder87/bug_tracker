@@ -52,6 +52,8 @@ gem 'mail'
 
 gem 'aws-sdk-ssm'
 
+gem 'aws-sdk-secretsmanager'
+
 gem 'devise'
 
 gem 'pry-rails'

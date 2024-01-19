@@ -9,8 +9,8 @@ build:
       - psql --version
     build:
       - bundle install
-      - rails db:create
-      - rails db:migrate
+      - rails db:create RAILS_ENV=production
+      - rails db:migrate RAILS_ENV=production
       - RAILS_ENV=production rake assets:precompile
 run:
   command: bundle exec rackup --host 0.0.0.0 -p 8080

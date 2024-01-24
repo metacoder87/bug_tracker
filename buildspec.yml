@@ -4,17 +4,17 @@ phases:
   install:
     runtime-versions:
       ruby: 3.1
-    pre_build:
-      commands:
-        - rbenv install 3.1.0
-        - gem install bundler -v 2.4.7
-        - sudo yum -y install postgresql-server postgresql-contrib postgresql-docs
-    build:
-      commands:
-        - bundle install
-        - rails db:create RAILS_ENV=production
-        - rails db:migrate RAILS_ENV=production
-        - RAILS_ENV=production rake assets:precompile
-    post_build:
-      commands:
-        - bundle exec rackup --host 0.0.0.0 -p 8080
+  pre_build:
+    commands:
+      - rbenv install 3.1.0
+      - gem install bundler -v 2.4.7
+      - sudo yum -y install postgresql-server postgresql-contrib postgresql-docs
+  build:
+    commands:
+      - bundle install
+      - rails db:create RAILS_ENV=production
+      - rails db:migrate RAILS_ENV=production
+      - RAILS_ENV=production rake assets:precompile
+  post_build:
+    commands:
+      - bundle exec rackup --host 0.0.0.0 -p 8080

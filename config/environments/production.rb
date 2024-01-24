@@ -17,10 +17,6 @@ Rails.application.configure do
     open_timeout:    30,
     read_timeout:    30 }
 
-  db_config = get_secret('bug-tracker-db')
-  secret_key_base = get_secret('bug-tracker/secret-key-base')
-  master_key = get_secret('bug-tracker/master-key')
-
   config.database_configuration = YAML.safe_load(db_config)
     
   # Code is not reloaded between requests.

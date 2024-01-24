@@ -4,14 +4,10 @@ phases:
   install:
     commands:
       - sudo yum install -y ruby3.1
-  pre_build:
-    commands:
-      - rbenv install 3.1.0
-      - rbenv global 3.1.0
       - gem install bundler -v 2.4.7
+      - bundle install
   build:
     commands:
-      - bundle install
       - rails db:create RAILS_ENV=production
       - rails db:migrate RAILS_ENV=production
       - RAILS_ENV=production rake assets:precompile

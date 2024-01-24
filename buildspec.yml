@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - apt-get install -y ruby3.1
+      - sudo yum install -y ruby3.1
   pre_build:
     commands:
       - rbenv install 3.1.0

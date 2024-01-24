@@ -2,11 +2,14 @@ version: 0.2
 
 phases:
   install:
+    commands:
+      - sudo yum install -y ruby31
     runtime-versions:
       ruby: 3.2
   pre_build:
     commands:
-      - rbenv install 3.2.0
+      - rbenv install 3.1.0
+      - rbenv global 3.1.0
       - gem install bundler -v 2.4.7
   build:
     commands:

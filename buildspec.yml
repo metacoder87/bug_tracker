@@ -5,7 +5,7 @@ phases:
     commands:
       - sudo yum install -y ruby3.1
       - pip install awscli
-      - yum install libffi-devel
+      - sudo yum install libffi-devel
   pre_build:
     commands:
       - rbenv install 3.1.0

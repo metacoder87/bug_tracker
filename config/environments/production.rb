@@ -17,7 +17,7 @@ Rails.application.configure do
     open_timeout:    30,
     read_timeout:    30 }
 
-  config.database_configuration = YAML.safe_load(db_config)
+  # config.database_configuration = YAML.safe_load(db_config)
     
   # Code is not reloaded between requests.
   config.cache_classes = true

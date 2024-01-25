@@ -12,8 +12,8 @@ phases:
   build:
     commands:
       - bundle install
-      - echo $RAILS_MASTER_KEY
-      - echo $bug_tracker/secret-key-base
+      - echo $bug-tracker/master-key
+      - echo $bug-tracker/secret-key-base
 
       - rails db:create RAILS_ENV=production
       - rails db:migrate RAILS_ENV=production

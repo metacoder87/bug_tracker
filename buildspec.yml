@@ -4,8 +4,6 @@ phases:
   install:
     commands:
       - sudo yum install -y ruby3.1
-      - pip install awscli
-      - sudo yum install libffi-devel
   pre_build:
     commands:
       - rbenv install 3.1.0
@@ -14,8 +12,7 @@ phases:
   build:
     commands:
       - bundle install
-      - export SECRET_KEY_BASE=$(aws secretsmanager get-secret-value --secret-id bug-tracker/secret-key-base --query SecretString --output text)
-      - rails db:create RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE
+      - rails db:create RAILS_ENV=production
       - rails db:migrate RAILS_ENV=production
       - RAILS_ENV=production rake assets:precompile
 artifacts:

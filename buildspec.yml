@@ -12,7 +12,6 @@ phases:
   build:
     commands:
       - bundle install
-      - RAILS_ENV=production rake assets:precompile
 artifacts:
   files:
     - public/assets/

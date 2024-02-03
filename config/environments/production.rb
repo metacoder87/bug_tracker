@@ -1,5 +1,4 @@
 require "active_support/core_ext/integer/time"
-require_relative "../initializers/secrets"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -10,20 +9,12 @@ Rails.application.configure do
     address:         'smtp.gmail.com',
     port:            587,
     domain:          'gmail.com',
-    # user_name:       Rails.application.credentials.dig(:google_smtp, :email),
-    # password:        Rails.application.credentials.dig(:google_smtp, :password),
-    user_name:       get_secret('smtp-email'),
-    password:        get_secret('smtp-password'),
+    user_name:       Rails.application.credentials.dig(:google_smtp, :email),
+    password:        Rails.application.credentials.dig(:google_smtp, :password),
     authentication:  'plain',
     enable_starttls: true,
     open_timeout:    30,
     read_timeout:    30 }
-
-  db_config = get_secret('bug-tracker-db')
-  secret_key_base = get_secret('bug-tracker/secret-key-base')
-  master_key = get_secret('bug-tracker/master-key')
-
-  config.database_configuration = YAML.safe_load(db_config)
     
   # Code is not reloaded between requests.
   config.cache_classes = true

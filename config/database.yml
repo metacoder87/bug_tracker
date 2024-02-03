@@ -80,10 +80,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT']
+  <<: *default
+  database: bug_tracker_production
+  username: bug_tracker
+  password: <%= ENV['BUG_TRACKER_DATABASE_PASSWORD'] %>
